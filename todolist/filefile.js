@@ -41,7 +41,7 @@ clearCompleted.addEventListener("mouseover", function(){
       return false;
     }
   })
-  data.toDoList = data.toDoList.filter(item => return false)
+  data.toDoList = data.toDoList.filter(item => false)
   render();
 })
 
