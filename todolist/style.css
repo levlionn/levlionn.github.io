@@ -1,9 +1,53 @@
 *{
   font-family: sans-serif;
+  font-size: 20px;
 }
 .completed{
-  color: #00a6dc;
-}
-h4{
   color: #ef891e;
+}
+
+body{
+  height: 100vh;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+#todolist{
+  width: 100vw;
+  max-width: 500px;
+  height: 80vh;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(24,9,255,0.6);
+}
+
+#todolist h1{
+  text-align: center;
+  font-size: 35px;
+}
+
+#todolist h4{
+  color: #ef891e;
+  text-align: center;
+}
+
+#todolist input{
+  width: 90%;
+  padding: 10px 5px;
+}
+
+#todolist ul{
+  height: 45vh;
+  overflow: auto;
+}
+
+@media screen and (max-width: 556px){
+  #todolist{
+    height: 100vh;
+    border-radius: 0;
+  }
 }

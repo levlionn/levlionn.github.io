@@ -5,9 +5,10 @@ var data = {
 var buttonPlus = document.querySelector("#buttonPlus");
 var buttonMinus = document.querySelector("#buttonMinus");
 var clearCompletedButton = document.querySelector("#clearCompleted");
-var input = document.querySelector("input");
+var input = document.querySelector("#todolist input");
 var ul = document.querySelector("ul");
 var selectAllButton = document.querySelector("#selectAll");
+var filterCompletedbutton = document.querySelector("#filterCompletedbutton")
 
 function replaceAll(source, text, replacement){
   //splitting up text into array chunks, joining back together with replacement.
@@ -28,7 +29,7 @@ function addTodo(text){
   if (text.trim() === ""){
     return;
   }
-  data.todoList.push({
+  data.todoList.unshift({
     text: text.trim(),
     completed: false,
     id: Date.now().toString()//built in function to tell ID.
@@ -57,6 +58,16 @@ function clearCompleted(){
   for (let i=0; i < data.todoList.length;i++){
     let toodo = data.todoList[i];
     if (toodo.completed === true){
+      data.todoList.splice(i,1);
+      i--;
+    }
+  }
+}
+
+function filterNotCompleted(){
+  for(let i=0;i<data.todoList.length;i++){
+    let currentPosition = data.todoList[i];
+    if(currentPosition.completed === false){
       data.todoList.splice(i,1);
       i--;
     }
@@ -135,6 +146,14 @@ ul.addEventListener("click", function(e){
   render();
   save();
 });
+
+filterCompletedbutton.addEventListener("click", function(){
+  filterNotCompleted();
+  render();
+  save();
+});
+
+
 
 document.addEventListener("DOMContentLoaded", function(){
   load();
