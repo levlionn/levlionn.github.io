@@ -8,7 +8,7 @@
 
 body{
   height: 100vh;
-  background-color: lightblue;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,9 @@ body{
   background-color: white;
   padding: 10px 15px;
   border-radius: 15px;
-  box-shadow: 0 0 5px rgba(24,9,255,0.6);
+  box-shadow: 0 0 150px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
 }
 
 #todolist h1{
@@ -31,6 +33,7 @@ body{
 }
 
 #todolist h4{
+  animation: glow 0.525s ease-in 0s infinite alternate;
   color: #ef891e;
   text-align: center;
 }
@@ -38,11 +41,36 @@ body{
 #todolist input{
   width: 90%;
   padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
 #todolist ul{
   height: 45vh;
   overflow: auto;
+}
+
+#todolist #controlbox{
+  background-color: white;
+  padding: 5px 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+#todolist button{
+  border-radius: 5px;
+  background-color: aliceblue;
+  border: 1px solid midnightblue;
+}
+
+@keyframes glow{
+  from{
+    text-shadow: 0 0 5px transparent;
+  }to{
+    text-shadow: 0 0 5px orange;
+  }
 }
 
 @media screen and (max-width: 556px){

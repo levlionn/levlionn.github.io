@@ -141,6 +141,10 @@ selectAllButton.addEventListener("click", function(){
 });
 
 ul.addEventListener("click", function(e){
+  if(e.target.tagName != "LI"){
+    return;
+  }
+  console.log(e.target)
   let id = e.target.getAttribute("data-id");
   toggleTodo(id);
   render();
