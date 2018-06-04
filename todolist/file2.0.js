@@ -37,7 +37,7 @@ function addTodo(text){
 }
 
 function removeMostRecent(){
-  data.todoList.pop(); //removes last index from array.
+  data.todoList.shift(); //removes last index from array.
 }
 
 function toggleTodo(id){
