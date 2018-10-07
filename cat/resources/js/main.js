@@ -9,11 +9,11 @@ function randomClip(){
 		n = Math.floor(Math.random() * 6) + 1;
 	}
 	currentClip = n;
-	return `resources/audio/${n}.mp3`;	
+	return `resources/audio/${n}.mp3`;
 }
 //////////////////////////////////////////////
 
-let cc = 10; //catcount
+let cc = 11; //catcount
 
 for(let i=0; i<cc;i++){
 	let row = document.createElement("div");
@@ -33,5 +33,3 @@ for(let i=0; i<cc;i++){
 	}
 	main.appendChild(row);
 }
-
-
