@@ -1,0 +1,26 @@
+
+body, main{
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background: #764ccc;
+}
+
+img{
+	max-width: 10vw;
+	margin: 4vw;
+	transition: .3s;
+}
+
+.row:nth-child(2n){
+	position:relative;
+	left: 6vw;
+}
+
+img.bigger{
+	transform: scale(1.4);
+}
+
+audio{
+	display: none;
+}
