@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lera's Website</title>
+    <link rel="stylesheet" href="resources/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet">
+</head>
+<body>
+
+<div id="root">
+
+    <!-- side nav bar-->
+    <aside>
+        <ul>
+            <li v-on:click="viewHome()" v-bind:class="{active: mode === 'home'}">Home</li>
+            <li v-for="outcome in outcomes" v-on:click="viewOutcome(outcome.id)" v-bind:class="{active: mode === 'outcomes' && outcome.id === currentOutcome_id}">{{outcome.name}} </li>
+        </ul>
+    </aside>
+
+    <!-- Home Page -->
+    <main v-if="mode === 'home'" class="home">
+        <div class="intro">
+            <h1>Hello, I'm Valeriya Nemtseva!</h1>
+            <h4>Student RN based in Toronto, ON.
+                    Welcome to my online portfolio!</h4>
+        </div>
+       
+        <div class="outro">
+                <h2>Think Global - Act Local</h2>
+                <p>After taking a global health course at York University I've got a passion for involving myself in global health. I think achieving global health is crucial but it can be overwhelming since there are so many issues to be resolved. People all over the world could involve themselves in this process but they need encouragement and guidance in this. The nursing profession can be that guide. I believe nursing is a global profession because we have a broad spectrum knowledge of the issues at hand, we have the competence to notice problems not visible to the naked eye, and we also have numerous connections with people who can be influential in global health (e.g. politicians). Nurses can act at different paradigms including individual, community, and societal. We are advocates for the public and we are not only taught to see the issues and find solutions for them, we are also taught to teach them to our patients. Nurses can play a major role in achieving global health if all of us unite in this long but worthy road. </p>
+        </div>
+
+    </main>
+
+    <!-- Outcome Paged based off id-->
+    <main v-else-if="mode === 'outcomes'" class="outcome">
+        <h1>{{ currentOutcome.name}}</h1>
+        <h4>{{ currentOutcome.overview }}</h4>
+        <section v-html="currentOutcome.main_text"></section>
+
+        <section v-for="(evidence,index) in currentOutcome.evidence" class="evidence">
+            <h2> Evidence #{{index + 1}}</h2>
+            <div>
+                <p>{{evidence.text}}</p>
+                <img 
+                    v-if="evidence.media_type === 'image'" 
+                    v-bind:src="evidence.media"
+                >
+                <iframe v-else-if="evidence.media_type === 'video'"
+                    v-bind:src="evidence.media" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+<script src="resources/js/vue.min.js"></script>
+<script src="resources/js/content.js"></script>
+<script src="resources/js/main.js"></script>
+
+</body>
+
+</html>

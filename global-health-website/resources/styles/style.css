@@ -1,0 +1,90 @@
+/*GLOBAL STYLES*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body{
+    background-color: #232126;
+    color: #c7d7e3;
+
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Merriweather', serif;
+    line-height: 1.6em;
+}
+
+#root{
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
+    display: flex;
+}
+
+/*NAVIGATION BAR*/
+
+aside {
+    min-width: calc(1200px / 4);
+    background-color: rgba(46, 46, 49, 0.44);
+    padding: 20px 40px;
+    margin-right: 30px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    align-self: flex-start;
+   }
+
+aside li{
+    cursor: pointer;
+    list-style: none;
+    padding: 15px 0;
+    transition: .2s;
+}
+
+aside li:hover, aside li.active{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/*MAIN BOII*/
+
+main .intro{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+main h1{
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+main h4{
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+main h2{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+main p {
+    line-height: 1.8em;
+    margin-bottom: 20px;
+}
+
+.evidence {
+    margin-top: 50px;
+}
+
+.evidence img{
+    margin-top: 20px;
+}
+
+.evidence iframe{
+    width: 100%;
+    height: 490px;
+}
