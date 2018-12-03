@@ -30,7 +30,7 @@ var content = [
          },
          {
           media_type: "image",
-          media: "C:/Users/levlionn/Desktop/Levlionn/gitHub/lera-websiteyay/resources/images/newResize.png",
+          media: "resources/images/newResize.png",
           text: "This is a website called Global Disaster Alert and Coordination System (GDACS). It estimates what, where, and when certain natural disasters might happen, hence, warning and preparing the populations for such disasters which can help avoid fatalities and damage to the best level possible. Looking at the website, I found out that many countries are currently experiencing earth quakes. This website made me realize the importance of being educated on natural disaster management and, also, the importance of other countries' aid to those experiencing it. The two evidences I described show that i have reached the learning outcome because by looking at the picture and the website, I was analyzing natural disasters gaining more knowledge and awareness on them.  "
          }
         ]
