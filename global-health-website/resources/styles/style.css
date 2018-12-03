@@ -9,21 +9,71 @@
 }
 
 body{
-    background-color: #232126;
-    color: #c7d7e3;
-
+    /*background: #010203;*/
+    background: black;
+    background-image: radial-gradient(circle, rgb(0, 0, 0), rgb(38,42,73,0.8));
+    /*background: linear-gradient(to left bottom, #2d5f9e, #010203);*/
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: 'Merriweather', serif;
+    /*font-family: 'Merriweather', serif;*/
+    font-family: 'Vesper Libre', serif;
     line-height: 1.6em;
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #FFFFFF;
 }
 
 #root{
     width: 100%;
+    height: 100%;
     max-width: 1200px;
     margin: 50px auto;
     display: flex;
+}
+
+/* BUTTON EFFECT */
+
+button{
+    display: list-item;
+    border-radius: 4px;
+    /*background-color: #2e75a5;*/
+    background-color: rgb(38,42,73,0.8);
+    border: solid white 1px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button:hover span {
+    padding-right: 25px;    
+}
+
+button:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 /*NAVIGATION BAR*/
@@ -36,44 +86,87 @@ aside {
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     align-self: flex-start;
+    position: fixed;
+    color: #FFFFFF;
    }
+
 
 aside li{
     cursor: pointer;
     list-style: none;
     padding: 15px 0;
-    transition: .2s;
 }
 
-aside li:hover, aside li.active{
-    text-decoration: underline;
+li::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width .5s;
+}
+
+li:hover::after, aside li.active{
+    width: 100%;
+    transition: width .5s;
     font-weight: bold;
 }
 
 /*MAIN BOII*/
 
-main .intro{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 20px;
-}
-main h1{
-    font-size: 36px;
-    margin-bottom: 10px;
+main{
+    margin-left: calc(1200px / 4);
 }
 
-main h4{
-    font-size: 15px;
-    margin-bottom: 30px;
+main .intro{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+    margin-left: 98px;
+    text-shadow: 0.5px 0.5px 0.5px #ccc;
+
+}
+
+main h1{
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-left: 98px;
+    text-align: center;
 }
 
 main h2{
     font-size: 22px;
+    padding: 8px;
     margin-bottom: 10px;
+    margin-left: 98px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 36px;
+}
+
+main h3{
+    font-size: 28px;
+}
+
+main h4{
+    font-size: 21px;
+    margin-bottom: 30px;
+    margin-left: 98px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-top: 0;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    opacity: 0.5;
+
 }
 
 main p {
     line-height: 1.8em;
     margin-bottom: 20px;
+    margin-left: 98px;
+    font-weight: 500;
+    font-size: 17px;
+    color: #FFFFFF;
+    display: inline-block;
+    text-align: justify;
 }
 
 .evidence {
@@ -82,9 +175,63 @@ main p {
 
 .evidence img{
     margin-top: 20px;
+    display: inline-block;
+    margin-left: 280px;
+    margin-left: 198px;
+    width: 69%;
 }
 
 .evidence iframe{
-    width: 100%;
+    width: 90%;
     height: 490px;
+    margin-left: 94px;
 }
+
+.intro h1{
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 50px;
+}
+
+.intro h3{
+    font-size: 27px;
+}
+
+.intro h5{
+    padding-top: 0;
+    text-align: center;
+    font-size: 21px;
+    opacity: 0.5;
+}
+
+.outro{
+    margin-left: 15px;
+}
+
+.makeImageDarker h3{
+    font-size: 50px;
+}
+
+.makeImageDarker{
+    background-image: URL("../images/stethoscope-and-globe.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 85px;
+    padding: 10px 10px;
+}
+
+
+.outro p{
+    color: whitesmoke;
+    z-index:0;
+    opacity: 1;
+    font-size: 20px;
+    display: inline-block;
+    text-align: justify;
+    margin-left: 0px;
+}
+
+
+/*MEDIA*/
+

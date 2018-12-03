@@ -4,7 +4,8 @@ var vm = new Vue({
     data: {
         mode: "home",
         outcomes: content,
-        currentOutcome_id: 0
+        currentOutcome_id: 0,
+        isHidden: false
     },
     computed: {
        
@@ -27,6 +28,7 @@ var vm = new Vue({
             document.title = "Home";
 
         }
+        
     }
 });
 
