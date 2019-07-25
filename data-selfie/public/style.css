@@ -1,0 +1,47 @@
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.topHalf {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomHalf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.locationStuff {
+  position: relative;
+  top: 500px;
+  margin-right: 25px;
+}
+
+.a {
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+  margin: 10px;
+  text-decoration: none;
+  color: purple;
+}
+
+input,
+label {
+  font-size: 2em;
+}
+
+.topHalf h1 {
+  font-size: 3em;
+}

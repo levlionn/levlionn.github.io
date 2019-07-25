@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>data selfie app</title>
+    <a href="index.html" alt="hi">Back to Home</a>
+  </head>
+  <body>
+    <script>
+      getData();
+
+      async function getData() {
+        const response = await fetch("/api");
+        const data = await response.json();
+        console.log(data);
+        createStuff(data);
+      }
+
+      function createStuff(info) {
+        for (item in info) {
+          let UserNameParagraph = document.createElement("h1");
+          let Location = document.createElement("p");
+          let UserTimeStamp = document.createElement("p");
+          let UserImage = document.createElement("img");
+          UserNameParagraph.textContent = info[item].user_name;
+
+          Location.textContent = `${info[item].lat}, ${info[item].lat}`;
+          UserTimeStamp.textContent = info[item].timeStamp;
+
+          UserImage.src = info[item].image64;
+
+          document.body.append(
+            UserNameParagraph,
+            Location,
+            UserTimeStamp,
+            UserImage
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

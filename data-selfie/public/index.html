@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"
+      integrity="sha256-2/3R3NV5zryj0fDjD3cDh+SNiWQ/TJiMVZzAo5FrhiU="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""
+    ></script>
+
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+  </head>
+  <body>
+    <div class="topHalf">
+      <h1>Data Selfie App</h1>
+      <p>
+        Will be used to track location of my laptop and timestamp my location
+        around toronto!
+      </p>
+      <p id="yesToLocation" style="color: red; text-decoration: underline;"></p>
+
+      <label for="name">Enter Your User Name</label>
+      <input type="text" name="user-name" id="un" />
+
+      <a href="all.html" alt="hi">List of all Entries</a>
+    </div>
+
+    <div class="bottomHalf">
+      <div class="a">
+        <p class="locationStuff">Latitude: <span id="latitude"></span></p>
+        <p class="locationStuff">Longitude: <span id="longitude"></span></p>
+      </div>
+
+      <button id="getUserData">
+        Submit and Find Out your location
+      </button>
+
+      <div id="mapid" style="height: 350px; width: 350px; margin: 20px;"></div>
+    </div>
+
+    <script>
+      function setup() {
+        noCanvas();
+        const video = createCapture(VIDEO);
+        video.size(340, 240);
+        video.position(70, 70);
+
+        var mymap = L.map("mapid").setView([0, 0], 1);
+        let marker = L.marker([0, 0], "You are here").addTo(mymap);
+
+        const attribution =
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap></>';
+
+        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        const tiles = L.tileLayer(tileUrl, { attribution }).addTo(mymap);
+
+        if ("geolocation" in navigator) {
+          console.log("Geolocation is available!");
+
+          const welcomeText = "We are able to see your location!";
+          document.getElementById("yesToLocation").textContent = welcomeText;
+
+          document
+            .getElementById("getUserData")
+            .addEventListener("click", event => {
+              navigator.geolocation.getCurrentPosition(async position => {
+                const user_name = document.getElementById("un").value;
+                video.loadPixels();
+                const image64 = video.canvas.toDataURL(); //convert to base64
+
+                const lat = position.coords.latitude;
+                document.getElementById("latitude").textContent = lat.toFixed(
+                  2
+                );
+
+                const lng = position.coords.longitude;
+                document.getElementById("longitude").textContent = lng.toFixed(
+                  2
+                );
+
+                mymap.setView([lat, lng], 20);
+                marker.setLatLng([lat, lng]);
+
+                const data = { lat, lng, user_name, image64 };
+
+                const options = {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                };
+
+                const response = await fetch("/api", options);
+                const dataBack = response.json();
+                console.log(dataBack);
+              });
+            });
+        } else {
+          console.log("Geolocation not available in this browser!");
+        }
+      }
+    </script>
+  </body>
+
+  <script src="../index.js/"></script>
+</html>
