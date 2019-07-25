@@ -1,7 +1,7 @@
 const express = require("express");
 const Datastore = require("nedb");
 const app = express();
-const fs = require("fs");
+// const fs = require("fs");
 
 app.listen(3000, () => console.log("Listening at 3000"));
 app.use(express.static(__dirname + "/public/"));
@@ -25,8 +25,8 @@ app.post("/api", (request, response) => {
   data.timeStamp = timeStamp;
   var imgData = data.image64;
 
-  fs.writeFileSync("synchronous.txt", data);
-  // db.insert(data);
+  // fs.writeFileSync("synchronous.txt", data);
+  db.insert(data);
   response.json(data);
 });
 
